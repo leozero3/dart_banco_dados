@@ -4,24 +4,15 @@ Future<void> main() async {
   final database = Database();
   final mysqlConnection = await database.openConnection();
 
-  await mysqlConnection.query(
+  var resultado = await mysqlConnection.query(
     'insert into aluno(id, nome) values(?,?)',
     [
       null,
-      'Isaac Gonzalez',
+      'Isaac gonzalez',
     ],
   );
 
-  // await mysqlConnection.execute(
-  //   "insert into aluno(id, nome) values(id, nome)",
-  //   {
-  //    'id' : null ,
-  //     'nome':'Isaac',
-  //   },
-  // );
-
-  print(mysqlConnection);
-
+  print(resultado.affectedRows);
   // print(mysqlConnection.toString());
 
 }
